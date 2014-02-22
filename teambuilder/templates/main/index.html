@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ titulo }}</title>
-</head>
-<body>
-{{ loca }}
+{% extends "base.html" %}
 
-<ul><li><a href="{% url 'contact' %}">Contact</a></li></ul>
+{% block title %}
 
-</body>
-</html>
+    {{ title }}
+
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}
