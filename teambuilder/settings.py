@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'teambuilder.apps.main',
+    'teambuilder.apps.user',
 )
 
 MIDDLEWARE_CLASSES = (

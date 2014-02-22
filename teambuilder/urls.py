@@ -5,5 +5,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^', include('teambuilder.apps.main.urls')),
+    url(r'^', include('teambuilder.apps.user.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
