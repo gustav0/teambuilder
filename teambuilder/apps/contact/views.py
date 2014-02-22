@@ -33,7 +33,7 @@ def contact(request):
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
                 return HttpResponseRedirect('thanks/')
-            else:  #CREO QUE NO ES NECESARIO ESTE ELSE.
+            else:
                 return HttpResponse('Make sure all fields are entered and valid.')
     else:
         form = ContactForm() # An unbound form
