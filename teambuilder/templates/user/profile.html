@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 
 {% block title %}
-
+    {{ title }}
 {% endblock %}
 
 {% block body %}
-
+    {% if user.is_authenticated %}
+        <p>Email: {{ user.email }}.</p>
+        <p>First Name: {{ user.first_name }}.</p>
+        <p>Last Name: {{ user.last_name }}.</p>
+        <p>In Game Name: {{ user.in_game_name }}.</p>
+        <p>Current League: {{ user.current_league }}.</p>
+    {% endif %}
 {% endblock %}
