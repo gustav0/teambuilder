@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'teambuilder.apps.main',
     'teambuilder.apps.user',
     'teambuilder.apps.contact',
+    'teambuilder.apps.login',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,3 +89,7 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), 'templates')
 )
+
+LOGIN_URL = '/login/'
+
+AUTH_USER_MODEL = 'user.User'

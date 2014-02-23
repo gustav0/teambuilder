@@ -7,7 +7,6 @@ class registerForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
 
-
     class Meta:
         model = User
         fields = ('email', 'first_name', 'last_name')
@@ -18,4 +17,5 @@ class registerForm(forms.ModelForm):
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError("Los passwords no coinciden")
         return password2
+
 
