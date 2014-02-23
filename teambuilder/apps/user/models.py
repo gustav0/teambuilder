@@ -17,7 +17,6 @@ class UserManager(BaseUserManager):
         user = self.create_user(email, password)
         user.is_admin = True
         user.is_active = True
-        user.is_staff = True
         user.save(using=self._db)
         return user
 
@@ -29,10 +28,11 @@ class User(AbstractBaseUser):
     current_league =  models.CharField(verbose_name='Current League', max_length=30)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
     register_date = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name']
+    REQUIRED_FIELDS = []
 
     objects = UserManager()
 
@@ -57,7 +57,3 @@ class User(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
-
-    @property
-    def is_staff(self):
-        return self.is_admin

@@ -1,4 +1,3 @@
-from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from teambuilder.apps.user.models import User
 
@@ -17,4 +16,12 @@ class registerForm(forms.ModelForm):
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError("Los passwords no coinciden")
         return password2
+
+    def save(self, commit=True):
+        user = super(registerForm, self).save(commit=False)
+        user.set_password(self.cleaned_data["password1"])
+        user.is_staff = False
+        if commit:
+            user.save()
+        return user
 
