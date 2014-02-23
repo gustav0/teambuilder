@@ -8,4 +8,4 @@ class loginForm(AuthenticationForm):
     password = forms.CharField(error_messages={'required':'A password is required.'},
         widget=forms.PasswordInput(attrs={'placeholder':'Password', 'style':''}),
     )
-    error_messages = {u'invalid_login':'invalido' , u'inactive':'The account isn\'t active.'}
+    error_messages = {'invalid_login':'The provided information isn\'t valid.', 'inactive':'The account isn\'t active.'}

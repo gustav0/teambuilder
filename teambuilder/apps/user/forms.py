@@ -18,4 +18,3 @@ class registerForm(forms.ModelForm):
             raise forms.ValidationError("Los passwords no coinciden")
         return password2
 
-
