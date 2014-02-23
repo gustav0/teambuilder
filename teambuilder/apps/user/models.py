@@ -28,10 +28,11 @@ class User(AbstractBaseUser):
     current_league =  models.CharField(verbose_name='Current League', max_length=30)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
     register_date = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name']
 
     objects = UserManager()
 
@@ -46,4 +47,17 @@ class User(AbstractBaseUser):
         return self.email
 
     def get_full_name(self):
-        return self.first_name+" "+self.last_name
+        return self.email
+
+    def get_short_name(self):
+        return self.email
+
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True
+
+    @property
+    def is_staff(self):
+        return self.is_admin
