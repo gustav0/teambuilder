@@ -3,7 +3,7 @@ from django.template import RequestContext
 from teambuilder.apps.user.forms import registerForm
 
 def profile(request):
-    title = 'TeamBuilder'
+    title = 'TeamBuilder - User Profile'
     ctx = {'title':title}
     return render_to_response('user/profile.html', ctx, context_instance=RequestContext(request))
 
