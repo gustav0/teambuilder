@@ -93,3 +93,15 @@ TEMPLATE_DIRS = (
 LOGIN_URL = '/login/'
 
 AUTH_USER_MODEL = 'user.User'
+
+ADMIN_MAIL = 'ingferrermiguel@gmail.com'
+#
+"""
+DEFAULT_FROM_EMAIL = 'workorbit@gmail.com'
+SERVER_EMAIL = 'workorbit@gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'workorbit@gmail.com'
+EMAIL_HOST_PASSWORD = 'P@ssw0rd5'
+"""

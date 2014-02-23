@@ -4,39 +4,26 @@ from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from teambuilder.apps.contact.forms import ContactForm
 from django.core.mail import send_mail, BadHeaderError
+from teambuilder.settings import ADMIN_MAIL as _email
 
-f = ContactForm() #AUN NO ESTA FUNCIONANDO
-
-data = {'subject': 'hello',
-        'message': 'Hi there',
-        'sender': 'foo@example.com',
-        'cc_myself': True}
-f = ContactForm(data)
 
 def contact(request):
     title = 'TeamBuilder - Contact Us'
-    if request.method == 'POST': # If the form has been submitted...
-        form = ContactForm(request.POST) # A form bound to the POST data
-        if form.is_valid(): # All validation rules pass
-            subject = form.cleaned_data['subject']
-            message = form.cleaned_data['message']
-            sender = form.cleaned_data['sender']
-            cc_myself = form.cleaned_data['cc_myself']
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        subject = form.cleaned_data['subject']
+        message = form.cleaned_data['message']
+        sender = form.cleaned_data['sender']
 
-            recipients = ['ingferrermiguel@gmail.com']
-            if cc_myself:
-                recipients.append(sender)
-
-            if subject and message and sender:
-                try:
-                    send_mail(subject, message, sender, recipients)
-                except BadHeaderError:
-                    return HttpResponse('Invalid header found.')
-                return HttpResponseRedirect('thanks/')
-            else:
-                return HttpResponse('Make sure all fields are entered and valid.')
-    else:
-        form = ContactForm() # An unbound form
+        recipients = [_email]
+        if subject and message and sender:
+            try:
+                send_mail(subject, message, sender, recipients)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return HttpResponseRedirect('thanks/')
+        else:
+            pass
 
     ctx = {'title':title, 'form':form}
     return render_to_response('contact/contact.html', ctx, context_instance=RequestContext(request))
