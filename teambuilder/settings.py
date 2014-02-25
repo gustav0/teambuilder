@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'teambuilder.apps.user',
     'teambuilder.apps.contact',
     'teambuilder.apps.login',
+    'teambuilder.apps.lol',
 )
 
 MIDDLEWARE_CLASSES = (
