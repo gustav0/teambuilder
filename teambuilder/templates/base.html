@@ -1,11 +1,44 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>{% block title %}{% endblock %}</title>
+    {% block css %}
+        <link href="{% static "bootstrap/css/bootstrap.css"  %}" rel="stylesheet">
+        <link href="{% static "bootstrap/css/bootstrap-responsive.css"  %}" rel="stylesheet">
+        <style>
+            body{
+                padding: 60px 0 0 0;
+            }
+        </style>
+    {% endblock %}
 </head>
 <body>
-{% block body %}
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="{% url 'index' %}">TeamBuilder</a>
+                <ul class="nav">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+                {% if user.is_authenticated %}
+                    <p class="navbar-text pull-right">
+                        Logged in as <a href="{% url 'profile' %}" class="navbar-link">{{ user.first_name }} {{ user.last_name }}</a>
+                    </p>
+                {% else %}
+                    <form action="/login/" method="post" class="navbar-form pull-right">
+                        {% block login_index %}
+                        {% endblock %}
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 
-{% endblock %}
+    <div class="container-fluid">
+        {% block body %}{% endblock %}
+    </div>
+{% block js %}{% endblock %}
 </body>
 </html>

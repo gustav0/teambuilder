@@ -3,7 +3,7 @@ from django import forms
 
 class loginForm(AuthenticationForm):
     username = forms.EmailField(error_messages={'required':'An email is required.', 'invalid':'That\'s not a valid email.'},
-        widget=forms.TextInput(attrs={'autocomplete':'off', 'placeholder':'name@mail.com', 'style':''}),
+        widget=forms.TextInput(attrs={'autocomplete':'off', 'placeholder':'Email', 'style':''}),
     )
     password = forms.CharField(error_messages={'required':'A password is required.'},
         widget=forms.PasswordInput(attrs={'placeholder':'Password', 'style':''}),

@@ -1,15 +1,18 @@
 {% extends "base.html" %}
 
-{% block title %}
+{% block title %}{{ title }}{% endblock %}
 
-    {{ title }}
-
-{% endblock %}
+{% if form %}
+    {% block login_index %}
+        {% csrf_token %}
+        {% for field in form %}
+            {{ field }}
+        {% endfor %}
+        <button type="submit" class="btn">Log in</button>
+    {% endblock %}
+{% endif %}
 
 {% block body %}
-    {% if user.is_authenticated %}
-        <p>Welcome, {{ user.first_name }}. Thanks for logging in.</p>
-    {% else %}
-        <p>Welcome, new user. Please log in.</p>
-    {% endif %}
+    <h1> Welcome to Teambuilder!</h1>
 {% endblock %}
+
