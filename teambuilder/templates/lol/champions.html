@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+
 {% block title %}
     {{ title }}
 {% endblock %}
@@ -9,17 +10,22 @@
         float:left;
         width:150px;
         height:120px;
-        padding: 7px;
-        margin: 4px;
+        padding: 10px;
+        margin: 10px;
+        -webkit-box-shadow: 0 0 15px 3px rgba(230,230,230,1);
+        box-shadow: 0 0 15px 3px rgba(230,230,230,1);
     }
     </style>
 {% endblock %}
 
 {% block body %}
+
+
     {% for champ in champions %}
-    <div class="champion-container thumbnail">
-        {{ champ }}
-        <img src="{% static 'img/champions/'|add:champ|add:'_Splash_0_e.jpg' %}" alt="" title="" width="150" height="84">
+        <div class="champion-container thumbnail">
+            {{ champ.name }}
+            <img src="{{ champ.image }}" alt="" title="" width="150" height="84">
+
     </div>
     {% endfor %}
 {% endblock %}

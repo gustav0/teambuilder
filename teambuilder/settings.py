@@ -42,6 +42,8 @@ INSTALLED_APPS = (
     'teambuilder.apps.contact',
     'teambuilder.apps.login',
     'teambuilder.apps.lol',
+
+    #'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -97,3 +99,23 @@ LOGIN_URL = '/login/'
 AUTH_USER_MODEL = 'user.User'
 
 ADMIN_MAIL = 'ingferrermiguel@gmail.com'
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'log/debug.log',
+            },
+        },
+    'loggers': {
+        'django.request': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+            },
+        },
+    }
