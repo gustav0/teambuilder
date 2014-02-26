@@ -1,28 +1,25 @@
 {% extends "base.html" %}
-
+{% load staticfiles %}
 {% block title %}
-
     {{ title }}
-
+{% endblock %}
+{% block css %}
+    <style>
+    .champion-container{
+        float:left;
+        width:150px;
+        height:120px;
+        padding: 7px;
+        margin: 4px;
+    }
+    </style>
 {% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img data-src="holder.js/300x200" alt="...">
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
     {% for champ in champions %}
-    <p>{{ champ }}<p>
+    <div class="champion-container thumbnail">
+        {{ champ }}
+        <img src="{% static 'img/champions/'|add:champ|add:'_Splash_0_e.jpg' %}" alt="" title="" width="150" height="84">
+    </div>
     {% endfor %}
 {% endblock %}
