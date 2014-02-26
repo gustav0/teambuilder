@@ -1,7 +1,11 @@
 *.pyc
 .idea/*
+
 *.jpg
+*.png
+
 *.sqlite3
 *.sqlite3.*
+
 *.log
 *.log.*
