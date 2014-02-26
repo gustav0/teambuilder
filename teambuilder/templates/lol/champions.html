@@ -7,11 +7,7 @@
 {% block css %}
     <style>
     .champion-container{
-        float:left;
-        width:150px;
-        height:120px;
-        padding: 10px;
-        margin: 10px;
+        float: left; width: 100px; height: 115px; margin: 10px;
         -webkit-box-shadow: 0 0 15px 3px rgba(230,230,230,1);
         box-shadow: 0 0 15px 3px rgba(230,230,230,1);
     }
@@ -20,11 +16,10 @@
 
 {% block body %}
 
-
     {% for champ in champions %}
         <div class="champion-container thumbnail">
-            {{ champ.name }}
-            <img src="{{ champ.image }}" alt="" title="" width="150" height="84">
+           <p style="margin: 0;text-align: center;"> {{ champ.name }} </p>
+            <img src="{{ champ.image }}" alt="" title="" width="90" height="90" class="img-thumbnail">
 
     </div>
     {% endfor %}
