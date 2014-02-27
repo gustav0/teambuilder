@@ -117,3 +117,99 @@ Not Found: /champions/teambuilder/apps/lol/static/img/champion/Ziggs_Splash_0_e.
 Not Found: /champions/teambuilder/apps/lol/static/img/champion/Zilean_Splash_0_e.jpg
 Not Found: /champions/teambuilder/apps/lol/static/img/champion/Zyra_Splash_0_e.jpg
 Not Found: /champions/static/img/champion/Aatrox_Splash_0_e.jpg
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 114, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ingferrermiguel/Documentos/Projects/teambuilder/teambuilder/apps/main/views.py", line 6, in index
+    if request.user.is_authenticated():
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/utils/functional.py", line 213, in inner
+    self._setup()
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/utils/functional.py", line 298, in _setup
+    self._wrapped = self._setupfunc()
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/contrib/auth/middleware.py", line 18, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/contrib/auth/middleware.py", line 10, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/contrib/auth/__init__.py", line 140, in get_user
+    user_id = request.session[SESSION_KEY]
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/contrib/sessions/backends/base.py", line 47, in __getitem__
+    return self._session[key]
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/contrib/sessions/backends/base.py", line 173, in _get_session
+    self._session_cache = self.load()
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/contrib/sessions/backends/db.py", line 20, in load
+    expire_date__gt=timezone.now()
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/models/manager.py", line 151, in get
+    return self.get_queryset().get(*args, **kwargs)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/models/query.py", line 301, in get
+    num = len(clone)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/models/query.py", line 77, in __len__
+    self._fetch_all()
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/models/query.py", line 854, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/models/query.py", line 220, in iterator
+    for row in compiler.results_iter():
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 709, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 782, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/backends/util.py", line 69, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/backends/util.py", line 53, in execute
+    return self.cursor.execute(sql, params)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/utils.py", line 99, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/backends/util.py", line 53, in execute
+    return self.cursor.execute(sql, params)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/backends/sqlite3/base.py", line 450, in execute
+    return Database.Cursor.execute(self, query, params)
+OperationalError: no such table: django_session
+Not Found: /favicon.ico
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 114, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ingferrermiguel/Documentos/Projects/teambuilder/teambuilder/apps/main/views.py", line 6, in index
+    if request.user.is_authenticated():
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/utils/functional.py", line 213, in inner
+    self._setup()
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/utils/functional.py", line 298, in _setup
+    self._wrapped = self._setupfunc()
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/contrib/auth/middleware.py", line 18, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/contrib/auth/middleware.py", line 10, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/contrib/auth/__init__.py", line 140, in get_user
+    user_id = request.session[SESSION_KEY]
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/contrib/sessions/backends/base.py", line 47, in __getitem__
+    return self._session[key]
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/contrib/sessions/backends/base.py", line 173, in _get_session
+    self._session_cache = self.load()
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/contrib/sessions/backends/db.py", line 20, in load
+    expire_date__gt=timezone.now()
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/models/manager.py", line 151, in get
+    return self.get_queryset().get(*args, **kwargs)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/models/query.py", line 301, in get
+    num = len(clone)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/models/query.py", line 77, in __len__
+    self._fetch_all()
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/models/query.py", line 854, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/models/query.py", line 220, in iterator
+    for row in compiler.results_iter():
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 709, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 782, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/backends/util.py", line 69, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/backends/util.py", line 53, in execute
+    return self.cursor.execute(sql, params)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/utils.py", line 99, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/backends/util.py", line 53, in execute
+    return self.cursor.execute(sql, params)
+  File "/root/Envs/teambuilder/local/lib/python2.7/site-packages/django/db/backends/sqlite3/base.py", line 450, in execute
+    return Database.Cursor.execute(self, query, params)
+OperationalError: no such table: django_session
+Not Found: /favicon.ico
