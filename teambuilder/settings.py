@@ -43,7 +43,7 @@ INSTALLED_APPS = (
     'teambuilder.apps.login',
     'teambuilder.apps.lol',
 
-    #'sorl.thumbnail',
+    'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
