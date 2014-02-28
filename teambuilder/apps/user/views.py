@@ -26,16 +26,14 @@ def register(request):
     ctx = {'form':form}
     return render_to_response('user/register.html', ctx, context_instance=RequestContext(request))
 
-
 @login_required
-#@user_passes_test(lambda u: u.in_game_name is None)
 def firstSteps(request):
-    user = User.objects.get(pk=request.user.id)
+    if request.user.has_in_game_name():
+        return redirect('/profile/')
+
     if request.method == 'POST':
-        print 'si'
-        form = summonerName(request.POST, instance=user)
+        form = summonerName(request.POST, instance=request.user)
         if form.is_valid():
-            print "si2"
             form.save()
             return HttpResponseRedirect("/profile/")
     else:

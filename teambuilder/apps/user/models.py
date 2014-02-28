@@ -60,3 +60,9 @@ class User(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+
+    def has_in_game_name(self):
+        if self.in_game_name is not None:
+            return True
+        else:
+            return False

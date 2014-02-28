@@ -5,9 +5,15 @@
 {% if form %}
     {% block login_index %}
         {% csrf_token %}
-        {% for field in form %}
-            <p style="text-align: center;">{{ field }}</p>
-        {% endfor %}
+        <div class="input-group input-group-sm">
+            {{ form.email }}
+            <input type="text" class="form-control">
+
+            <div class="input-group-btn">
+                <!-- Button and dropdown menu -->
+            </div>
+
+        </div>
         <button type="submit" class="btn">Log in</button>
     {% endblock %}
 {% endif %}

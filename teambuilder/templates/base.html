@@ -3,10 +3,10 @@
 <html>
 <head>
     <title>{% block title %}{% endblock %}</title>
-    <link href="{% static "bootstrap/css/bootstrap.css"  %}" rel="stylesheet">
-    <link href="{% static "bootstrap/css/bootstrap-responsive.css"  %}" rel="stylesheet">
+    <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "bootstrap/css/bootstrap-responsive.css" %}" rel="stylesheet">
     <style>
-        body{
+        body {
             padding: 60px 0 0 0;
         }
     </style>
@@ -15,60 +15,57 @@
     {% endblock %}
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="brand" href="{% url 'index' %}">TeamBuilder</a>
-                <ul class="nav">
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="{% url 'index' %}">TeamBuilder</a>
+            <ul class="nav">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+            {% if user.is_authenticated %}
+
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown"
+                           class="dropdown-toggle">{{ user.first_name }} {{ user.last_name }}<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'profile' %}">Profile</a></li>
+                            <li><span class="glyphicon glyphicon-star"></span></li>
+                            <li class="divider"></li>
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+                    </li>
                 </ul>
-                {% if user.is_authenticated %}
 
-                    <ul class="nav pull-right">
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">{{ user.first_name }} {{ user.last_name }}<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{% url 'profile' %}">Profile</a></li>
-                                <li><span class="glyphicon glyphicon-star"></span></li>
-                                <li class="divider"></li>
-                                <li><a href="{% url 'logout' %}">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+            {% else %}
 
-                {% else %}
-                    <ul class="nav pull-right">
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Sign in<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <form action="/login/" method="post" class="navbar-form pull-right" style="width: 260px">
-                                    {% block login_index %}
-                                    {% endblock %}
-                                </form>
-                                <li class="divider"></li>
-                                <li><a href="#">Forgot Password?</a></li>
-                                <li><a href="{% url 'register' %}">Sign up</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                {% endif %}
-            </div>
+                <form action="/login/" method="post" class="navbar-form pull-right" style="width: 260px">
+                    {% block login_index %}
+                    {% endblock %}
+                </form>
+
+                <a href="#">Forgot Password?</a>
+                <a href="{% url 'register' %}">Sign up</a>
+
+            {% endif %}
         </div>
     </div>
+</div>
 
-    <div class="container-fluid">
-        {% block body %}{% endblock %}
-    </div>
+<div class="container-fluid">
+    {% block body %}{% endblock %}
+</div>
 
-    <div class="modal-footer">
-        <span class="glyphicon icon-bookmark"></span> TeamBuilder dot com 2014 |  Privacy  |  About  |  Contact  |  Feedback  |  Advertise
-    </div>
+<div class="modal-footer">
+    <span class="glyphicon icon-bookmark"></span>TeamBuilder.com 2014 © All rights reserved | Privacy | About | Contact | Feedback |
+    Advertise
+</div>
 
-    <script type="text/javascript" src="{% static "bootstrap/js/jquery-1.11.0.min.js"  %}"></script>
-    <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.js"  %}"></script>
-    <script type="text/javascript" src="{% static "bootstrap/js/holder.js"  %}"></script>
-    {% block js %}
-    {% endblock %}
+<script type="text/javascript" src="{% static "bootstrap/js/jquery-1.11.0.min.js" %}"></script>
+<script type="text/javascript" src="{% static "bootstrap/js/bootstrap.js" %}"></script>
+<script type="text/javascript" src="{% static "bootstrap/js/holder.js" %}"></script>
+{% block js %}
+{% endblock %}
 </body>
 </html>
