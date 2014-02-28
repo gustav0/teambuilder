@@ -6,7 +6,7 @@
     {% block login_index %}
         {% csrf_token %}
         {% for field in form %}
-            <p>{{ field }}</p>
+            <p style="text-align: center;">{{ field }}</p>
         {% endfor %}
         <button type="submit" class="btn">Log in</button>
     {% endblock %}

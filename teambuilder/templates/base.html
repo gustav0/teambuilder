@@ -24,6 +24,7 @@
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
                 {% if user.is_authenticated %}
+
                     <ul class="nav pull-right">
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">{{ user.first_name }} {{ user.last_name }}<b class="caret"></b></a>
@@ -35,12 +36,13 @@
                             </ul>
                         </li>
                     </ul>
+
                 {% else %}
                     <ul class="nav pull-right">
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Sign in<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <form action="/login/" method="post" class="navbar-form pull-right">
+                                <form action="/login/" method="post" class="navbar-form pull-right" style="width: 260px">
                                     {% block login_index %}
                                     {% endblock %}
                                 </form>
