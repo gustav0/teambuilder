@@ -8,7 +8,6 @@ from teambuilder.settings import ADMIN_MAIL as _email
 
 
 def contact(request):
-    title = 'TeamBuilder - Contact Us'
     form = ContactForm(request.POST or None)
     if form.is_valid():
         subject = form.cleaned_data['subject']
@@ -25,11 +24,10 @@ def contact(request):
         else:
             pass
 
-    ctx = {'title':title, 'form':form}
+    ctx = {'form':form}
     return render_to_response('contact/contact.html', ctx, context_instance=RequestContext(request))
 
 def thanks(request):
-    title = 'TeamBuilder - Thanks'
     message = 'Thanks for submitting us a message. We sincerely appreciate your taking time to provide your comments and feedback.'
-    ctx = {'title':title, 'message':message}
+    ctx = {'message':message}
     return render_to_response('contact/thanks.html', ctx, context_instance=RequestContext(request))

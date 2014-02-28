@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-{% block title %}
-    {{ title }}
-{% endblock %}
 {% block css %}
     <style>
     .champion-container{
@@ -15,12 +12,10 @@
 {% endblock %}
 
 {% block body %}
-
     {% for champ in champions %}
         <div class="champion-container thumbnail">
            <p style="margin: 0;text-align: center;"> {{ champ.name }} </p>
             <img src="{{ champ.image }}" alt="" title="" width="90" height="90" class="img-thumbnail">
-
-    </div>
+        </div>
     {% endfor %}
 {% endblock %}

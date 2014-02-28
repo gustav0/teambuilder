@@ -7,6 +7,5 @@ def index(request):
         form = None
     else:
         form = loginForm()
-    title = 'TeamBuilder'
-    ctx = {'title':title, 'form':form}
+    ctx = {'form':form}
     return render_to_response('main/index.html', ctx, context_instance=RequestContext(request))

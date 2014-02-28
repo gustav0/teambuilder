@@ -1,9 +1,5 @@
 {% extends "base.html" %}
 
-{% block title %}
-    {{ title }}
-{% endblock %}
-
 {% block body %}
     {% if user.is_authenticated %}
         <p>Email: {{ user.email }}</p>

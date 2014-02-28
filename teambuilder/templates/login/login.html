@@ -3,14 +3,14 @@
 {% block body %}
     <form method="post" id="login_form" style="margin: 10px auto;width: 220px;padding: 1% 3%;border-radius: 10px;-webkit-box-shadow: 0 0 15px 3px rgba(230,230,230,1);box-shadow: 0 0 15px 3px rgba(230,230,230,1);">
         {% csrf_token %}
+        <h3>Sign in to Teambuilder</h3>
         <p> {{ form.non_field_errors }} </p>
-
         {% for field in form %}
-            <p> {{ field.label }}</p>
             <p> {{ field }}</p>
             <p> {{ field.errors }}</p>
         {% endfor %}
-
-        <button type="submit" class="btn btn-default" tabindex="-1">Sign in</button>
+        <p><button type="submit" class="btn btn-default" tabindex="-1">Sign in</button>
+        <a href="#">Forgot password?</a></p>
+        <p>You don't have an account? <a href="{% url 'register' %}">Sign up now</a></p>
     </form>
 {% endblock %}
