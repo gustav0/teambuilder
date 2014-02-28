@@ -100,6 +100,7 @@ AUTH_USER_MODEL = 'user.User'
 
 ADMIN_MAIL = 'ingferrermiguel@gmail.com'
 
+LOL_API = 'cc22a2c0-35d0-4bef-b178-deb4e925120a'
 
 LOGGING = {
     'version': 1,

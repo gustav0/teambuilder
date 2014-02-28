@@ -8,7 +8,7 @@ from django.views.decorators.http import condition
 from teambuilder.apps.user.forms import registerForm
 from teambuilder.apps.user.forms import summonerName
 from teambuilder.apps.user.models import User
-
+from teambuilder.apps.lol.views import getSummonerInfo
 
 def register(request):
     form = registerForm(request.POST or None)
@@ -36,7 +36,7 @@ def firstSteps(request):
         form = summonerName(request.POST, instance=user)
         if form.is_valid():
             print "si2"
-            form.save()
+            getSummonerInfo (form.save())
             return HttpResponseRedirect("/profile/")
     else:
         form = summonerName(initial={'server': 'NA'})
