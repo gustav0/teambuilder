@@ -2,7 +2,8 @@ from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.views.decorators.http import condition
 
 from teambuilder.apps.user.forms import registerForm
 from teambuilder.apps.user.forms import summonerName
@@ -25,14 +26,18 @@ def register(request):
     ctx = {'form':form}
     return render_to_response('user/register.html', ctx, context_instance=RequestContext(request))
 
+
 @login_required
+#@user_passes_test(lambda u: u.in_game_name is None)
 def firstSteps(request):
     user = User.objects.get(pk=request.user.id)
-    if request.method == 'post':
+    if request.method == 'POST':
+        print 'si'
         form = summonerName(request.POST, instance=user)
         if form.is_valid():
+            print "si2"
             form.save()
-        return HttpResponseRedirect("/profile/")
+            return HttpResponseRedirect("/profile/")
     else:
         form = summonerName(initial={'server': 'NA'})
     ctx = {'form':form}
