@@ -10,31 +10,31 @@ from teambuilder.apps.user.models import User
 
 
 def register(request):
-    title = 'TeamBuilder - Register'
     form = registerForm(request.POST or None)
     if form.is_valid():
         form.save()
-        new_user = authenticate(username=request.POST['email'], password=request.POST['password1'])
-        login(request, new_user)
-        return HttpResponseRedirect("/firststeps/")
-    ctx = {'title':title, 'form':form}
+        user = authenticate(username=request.POST['email'], password=request.POST['password1'])
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect('/firststeps/')
+            else:
+                print 'user is not active'
+        else:
+            print 'the user is invalid'
+    ctx = {'form':form}
     return render_to_response('user/register.html', ctx, context_instance=RequestContext(request))
 
 @login_required
 def firstSteps(request):
-    title = 'TeamBuilder - First Steps'
     user = User.objects.get(pk=request.user.id)
     form = summonerName(request.POST, instance=user)
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect("/firststeps/")
-    else:
-        print 'not valid'
-    ctx = {'title':title, 'form':form}
+        return HttpResponseRedirect("/profile/")
+    ctx = {'form':form}
     return render_to_response('user/firststeps.html', ctx, context_instance=RequestContext(request))
 
 @login_required
 def profile(request):
-    title = 'TeamBuilder - User Profile'
-    ctx = {'title':title}
-    return render_to_response('user/profile.html', ctx, context_instance=RequestContext(request))
+    return render_to_response('user/profile.html', context_instance=RequestContext(request))
