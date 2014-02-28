@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login
@@ -17,7 +17,7 @@ def register(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/firststeps/')
+                return redirect('/firststeps/')
             else:
                 print 'user is not active'
         else:
@@ -28,10 +28,13 @@ def register(request):
 @login_required
 def firstSteps(request):
     user = User.objects.get(pk=request.user.id)
-    form = summonerName(request.POST, instance=user)
-    if form.is_valid():
-        form.save()
+    if request.method == 'post':
+        form = summonerName(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
         return HttpResponseRedirect("/profile/")
+    else:
+        form = summonerName(initial={'server': 'NA'})
     ctx = {'form':form}
     return render_to_response('user/firststeps.html', ctx, context_instance=RequestContext(request))
 

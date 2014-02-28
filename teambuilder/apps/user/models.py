@@ -21,9 +21,12 @@ class UserManager(BaseUserManager):
         return user
 
 class User(AbstractBaseUser):
+    SERVER = ((u'NA', u'North America'), (u'EUW', u'Europe West'), (u'EUN', u'Europe Nordic & East'), (u'BR',u'Brazil'), (u'TR', u'Turkey'), (u'RU', u'Russia'), (u'LAN', u'Latin America North'), (u'LAS', u'Latin America South'), (u'OCE', u'Oceania'))
     email = models.EmailField(verbose_name='Email', unique=True, db_index=True)
     first_name = models.CharField(verbose_name='First Name', max_length=30)
     last_name = models.CharField(verbose_name='Last Name', max_length=30)
+    server = models.CharField(verbose_name='Server', max_length=3, choices=SERVER, )
+    lol_id = models.IntegerField(verbose_name='League of legends summoner\'s id', max_length=10)
     in_game_name =  models.CharField(verbose_name='In Game Name', max_length=30)
     current_league =  models.CharField(verbose_name='Current League', max_length=30)
     is_active = models.BooleanField(default=True)
