@@ -40,9 +40,12 @@
 
             {% else %}
 
-                <form action="/login/" method="post" class="navbar-form pull-right" style="width: 260px">
-                    {% block login_index %}
-                    {% endblock %}
+                <form action="{% url 'login' %}" method="post" class="navbar-form pull-right" style="">
+                    <div class="row">
+                        {% block login_index %}
+
+                        {% endblock %}
+                    </div>
                 </form>
 
                 <a href="#">Forgot Password?</a>
@@ -53,13 +56,13 @@
     </div>
 </div>
 
-<div class="container-fluid">
+<div class="container">
     {% block body %}{% endblock %}
 </div>
 
 <div class="modal-footer">
-    <span class="glyphicon icon-bookmark"></span>TeamBuilder.com 2014 © All rights reserved | Privacy | About | Contact | Feedback |
-    Advertise
+    <span class="glyphicon icon-bookmark"></span>
+    <p style="display: inline;font-size: 12px;"> TeamBuilder.com 2014 © All rights reserved | Privacy | About | Contact | Feedback | Advertise </p>
 </div>
 
 <script type="text/javascript" src="{% static "bootstrap/js/jquery-1.11.0.min.js" %}"></script>

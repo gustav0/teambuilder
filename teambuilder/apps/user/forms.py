@@ -3,7 +3,6 @@ from teambuilder.apps.user.models import User
 
 
 class registerForm(forms.ModelForm):
-    email = forms.EmailField(label='Email', widget=forms.EmailField(attrs='class="form-control"'))
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
 
@@ -32,3 +31,4 @@ class summonerName(forms.ModelForm):
     class Meta:
         model = User
         fields = ('in_game_name', 'server')
+
