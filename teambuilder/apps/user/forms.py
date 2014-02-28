@@ -33,5 +33,5 @@ class summonerName(forms.ModelForm):
     def save(self, commit=True):
         user = super(summonerName, self).save(commit=False)
         if commit:
-            user.save()
+            user.save(update_fields=['in_game_name', 'current_league'])
         return user

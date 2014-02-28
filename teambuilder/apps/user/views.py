@@ -24,14 +24,12 @@ def register(request):
 def firstSteps(request):
     title = 'TeamBuilder - First Steps'
     user = User.objects.get(pk=request.user.id)
-    print user
-    if request.method == 'post':
-        form = summonerName(request.POST, instance=user)
-        if form.is_valid():
-            new_instance = form.save()
-            return HttpResponseRedirect("/profile/")
+    form = summonerName(request.POST, instance=user)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/firststeps/")
     else:
-        form = summonerName(instance=user)
+        print 'not valid'
     ctx = {'title':title, 'form':form}
     return render_to_response('user/firststeps.html', ctx, context_instance=RequestContext(request))
 
