@@ -1,7 +1,6 @@
 from django import forms
 from teambuilder.apps.user.models import User
 
-
 class registerForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
@@ -25,3 +24,14 @@ class registerForm(forms.ModelForm):
             user.save()
         return user
 
+class summonerName(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ('in_game_name', 'current_league')
+
+    def save(self, commit=True):
+        user = super(summonerName, self).save(commit=False)
+        if commit:
+            user.save()
+        return user
