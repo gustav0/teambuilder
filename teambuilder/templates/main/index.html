@@ -1,21 +1,10 @@
 {% extends "base.html" %}
 
-{% if form %}
-    {% block body %}
-    {% csrf_token %}
-        <div class="input-group input-group-sm input-group-btn">
-            {{ form.username }}
-            {{ form.password }}
-            <button type="submit" class="btn btn-default" tabindex="-1">Sign in</button>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1"><span class="caret"></span><span class="sr-only"></span></button>
-            <ul class="dropdown-menu pull-right" role="menu">
-                <li><a href="{% url 'register' %}">Sign up</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Forgot password?</a></li>
-            </ul>
-        </div>
-    {% endblock %}
-{% endif %}
+
+
+
+
+
 
 {% block body %}
     <h3> Welcome to Teambuilder!</h3>
