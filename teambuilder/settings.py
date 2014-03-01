@@ -121,12 +121,11 @@ LOGGING = {
         },
     }
 
-if DEBUG:
-    EMAIL_HOST = 'localhost'
-    EMAIL_PORT = 25
-    EMAIL_HOST_USER = ''
-    EMAIL_HOST_PASSWORD = ''
-    EMAIL_USE_TLS = False
-    DEFAULT_FROM_EMAIL = 'ingferrermiguel@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ingferrermiguel@gmail.com'
+EMAIL_HOST_PASSWORD = 'pon tu pass aqui'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 
 #setting up email server: python -m smtpd -n -c DebuggingServer localhost:1025

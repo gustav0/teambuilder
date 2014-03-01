@@ -13,7 +13,15 @@ def champions(request):
     ctx = {'champions':champions}
     return render_to_response('lol/champions.html', ctx, context_instance=RequestContext(request))
 
-def getSummonerInfo(user):
-    requestJson = json.loads(_requests.get('https://prod.api.pvp.net/api/lol/lan/v1.3/summoner/by-name/%s?api_key=%s' % (user.in_game_name, _api)).text)
+def saveSummonerInfo(user):
+    region = 'lan'
+    requestJson = json.loads(_requests.get('https://prod.api.pvp.net/api/lol/%s/v1.3/summoner/by-name/%s?api_key=%s' % (user.in_game_name, _api)).text)
     user.lol_id = requestJson[user.in_game_name.lower()]['id']
     user.save()
+
+def getSummonerInfo(id):
+    region = 'lan'
+    requestJson = json.loads(_requests.get('https://prod.api.pvp.net/api/lol/%s/v1.3/summoner/{%s}?api_key=%s' % (region, str(id), _api)).text)
+
+    print requestJson
+
