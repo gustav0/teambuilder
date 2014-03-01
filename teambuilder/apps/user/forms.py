@@ -8,7 +8,7 @@ class registerForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name')
+        fields = ('email',)
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -26,9 +26,14 @@ class registerForm(forms.ModelForm):
         return user
 
 
-class summonerName(forms.ModelForm):
-
+class summonerInformation(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('in_game_name', 'server')
+        fields = ('in_game_name', 'region')
+
+
+class personalInformation(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name')
 

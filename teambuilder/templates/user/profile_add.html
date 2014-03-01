@@ -2,7 +2,7 @@
 
 {% block body %}
     <h3>Tell us a bit more</h3>
-    <p class="lead">We need your League of Legends' summoner name.</p>
+    <p class="lead">{{ message }}</p>
     <form method="post" id="summoner_form">
         {% csrf_token %}
         <p> {{ form.non_field_errors }} </p>
@@ -11,6 +11,6 @@
             <p> {{ field }}</p>
             <p> {{ field.errors }}</p>
         {% endfor %}
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">Save</button>
     </form>
 {% endblock %}

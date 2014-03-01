@@ -5,8 +5,7 @@
         <p>Email: {{ user.email }}</p>
         <p>First Name: {{ user.first_name }}</p>
         <p>Last Name: {{ user.last_name }}</p>
-        <p>In Game Name: {{ user.in_game_name }}</p>
-        <p>Server: {{ user.get_server_display }}</p>
-        <p>Current League: {{ user.current_league }}</p>
+        <p>In Game Name: {{ summoner.name }}</p>
+        <p>Server: {{ user.get_region_display }}</p>
     {% endif %}
 {% endblock %}

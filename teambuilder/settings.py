@@ -100,26 +100,9 @@ AUTH_USER_MODEL = 'user.User'
 
 ADMIN_MAIL = 'ingferrermiguel@gmail.com'
 
-LOL_API = 'cc22a2c0-35d0-4bef-b178-deb4e925120a'
+lol_api_key_0 = 'c645f0de-6970-4025-8ff9-5eecf24de2ed'
+lol_api_key_1 = 'cc22a2c0-35d0-4bef-b178-deb4e925120a'
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': True,
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'log/debug.log',
-            },
-        },
-    'loggers': {
-        'django.request': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-            },
-        },
-    }
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ingferrermiguel@gmail.com'
