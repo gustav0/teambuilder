@@ -21,6 +21,7 @@
             <a class="brand" href="{% url 'index' %}">TeamBuilder</a>
             <ul class="nav">
                 <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'champions' %}">Champions</a></li>
             </ul>
             {% if user.is_authenticated %}
                 <ul class="nav pull-right">
@@ -28,6 +29,7 @@
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">{% if user.first_name == '' and user.last_name == '' %} Options {% else %}{{ user.first_name }} {{ user.last_name }}{% endif %}<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="{% url 'profile' %}">Profile</a></li>
+                            <li><a href="{% url 'account' %}">Account</a></li>
                             <li class="divider"></li>
                             <li><a href="{% url 'logout' %}">Logout</a></li>
                         </ul>
@@ -47,7 +49,7 @@
                                     <ul class="dropdown-menu pull-right" role="menu">
                                         <li><a href="{% url 'register' %}">Sign up</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#">Forgot password?</a></li>
+                                        <li><a href="{% url 'password_reset' %}">Forgot password?</a></li>
                                     </ul>
                                 </div>
                             </div>

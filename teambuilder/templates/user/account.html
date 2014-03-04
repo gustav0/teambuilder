@@ -1,9 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block body %}
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#account" data-toggle="tab">Account</a></li>
+        <li><a href="#password" data-toggle="tab">Password</a></li>
+    </ul>
+    <div class="tab-content">
+
+        <div class="tab-pane active" id="account">
+            <form id="tab">
+                <label>Email</label>
+                <input type="text" value="{{ user.email }}" class="input-xlarge" disabled>
+                <label>First Name</label>
+                <input type="text" value="{{ user.first_name }}" class="input-xlarge" disabled>
+                <label>Last Name</label>
+                <input type="text" value="{{ user.last_name }}" class="input-xlarge" disabled>
+            </form>
+        </div>
+        <div class="tab-pane" id="password">
+            <form id="tab2">
+                <label>New Password</label>
+                <input type="password" class="input-xlarge">
+                <label>Repeat Password</label>
+                <input type="password" class="input-xlarge">
+                <div>
+                    <button class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

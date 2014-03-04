@@ -105,8 +105,8 @@ lol_api_key_1 = 'cc22a2c0-35d0-4bef-b178-deb4e925120a'
 
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'ingferrermiguel@gmail.com'
-EMAIL_HOST_PASSWORD = 'pon tu pass aqui'
+EMAIL_HOST_USER = 'mdfingcisco@gmail.com'
+EMAIL_HOST_PASSWORD = 'md0618096'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 

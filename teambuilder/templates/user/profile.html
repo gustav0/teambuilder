@@ -1,11 +1,20 @@
 {% extends "base.html" %}
 
 {% block body %}
-    {% if user.is_authenticated %}
-        <p>Email: {{ user.email }}</p>
-        <p>First Name: {{ user.first_name }}</p>
-        <p>Last Name: {{ user.last_name }}</p>
-        <p>In Game Name: {{ summoner.name }}</p>
-        <p>Server: {{ user.get_region_display }}</p>
-    {% endif %}
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+        <li><a href="#champions" data-toggle="tab">Champions</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="profile">
+            <form id="tab">
+                <label>Summoner Name</label>
+                <input type="text" value="{{ user.in_game_name }}" class="input-xlarge" disabled>
+                <label>Server</label>
+                <input type="text" value="{{ user.get_region_display }}" class="input-xlarge" disabled>
+            </form>
+        </div>
+        <div class="tab-pane" id="champions">
+        </div>
+    </div>
 {% endblock %}
