@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block body %}
     <div id="carousel" class="carousel slide" data-ride="carousel">
@@ -10,23 +11,23 @@
 
         <div class="carousel-inner">
             <div class="active item">
-                <img src="http://www.desdebellaterra.com/takethenashor/wp-content/uploads/dr-mundo-inicio.jpg" alt="banner1" />
+                <img src="{% static "img/champion/Jayce_Splash_0.jpg" %}" alt="banner1" />
                 <div class="carousel-caption">
-                    <h3>Dr. Mundo</h3>
+                    <h3>Jayce</h3>
                     <p>...</p>
                 </div>
             </div>
             <div class="item">
-                <img src="http://www.desdebellaterra.com/takethenashor/wp-content/uploads/dr-mundo-inicio.jpg" alt="banner2" />
+                <img src="{% static "img/champion/Syndra_Splash_0.jpg" %}" alt="banner2" />
                 <div class="carousel-caption">
                     <h3>Syndra</h3>
                     <p>...</p>
                 </div>
             </div>
             <div class="item">
-                <img src="http://www.desdebellaterra.com/takethenashor/wp-content/uploads/dr-mundo-inicio.jpg" alt="banner3" />
+                <img src="{% static "img/champion/Aatrox_Splash_0.jpg" %}" alt="banner3" />
                 <div class="carousel-caption">
-                    <h3>Morgana</h3>
+                    <h3>Aatrox</h3>
                     <p>...</p>
                 </div>
             </div>
@@ -40,6 +41,8 @@
 
 <script>
     $(document).ready(function(){
-        $('.carousel').carousel()
+        $('.carousel').carousel({
+            interval: 3000
+        });
     });
 </script>
