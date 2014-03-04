@@ -70,3 +70,7 @@ def profile(request):
         information = None
     ctx = {'summoner': information}
     return render_to_response('user/profile.html', ctx, context_instance=RequestContext(request))
+
+@login_required
+def account(request):
+    return render_to_response('user/account.html', context_instance=RequestContext(request))
