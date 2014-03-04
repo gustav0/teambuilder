@@ -18,13 +18,14 @@ def champions(request):
 #This method only saves the user, who has updated the region and the in_game_name values
 def saveSummonerInfo(user):
     region = user.region
-    requestAPI = cache.get('requestAPIByName')
-    if requestAPI is None:
-        requestAPI = requests.get('https://prod.api.pvp.net/api/lol/%s/v1.3/summoner/by-name/%s?api_key=%s' % (region.lower(), user.in_game_name.lower(), api_key))
-        cache.set('requestAPIByName',requestAPI,600)
-    jsonRequest = json.loads(requestAPI.text)
-    user.lol_id = jsonRequest[str(user.in_game_name).lower()]['id']
-    user.save()
+    requestAPI = requests.get('https://prod.api.pvp.net/api/lol/%s/v1.3/summoner/by-name/%s?api_key=%s' % (region.lower(), user.in_game_name.lower(), api_key))
+    if requestAPI:
+        jsonRequest = json.loads(requestAPI.text)
+        user.lol_id = jsonRequest[str(user.in_game_name).lower()]['id']
+        user.save()
+        return True
+    else:
+        return False
 
 # Returns a map with the profileIconId and summonerLevel
 # Params id - User's lol_id

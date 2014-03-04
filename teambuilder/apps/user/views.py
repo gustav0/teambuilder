@@ -1,10 +1,11 @@
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.cache import cache
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, redirect, render
 from django.template import RequestContext
-from django.views.decorators.cache import cache_page
+from django.forms.forms import NON_FIELD_ERRORS
+
 from teambuilder.apps.user.forms import registerForm
 from teambuilder.apps.user.forms import summonerInformation, personalInformation
 from teambuilder.apps.lol.views import saveSummonerInfo, getSummonerInfo
@@ -24,16 +25,19 @@ def register(request):
     else:
         return render(request, 'user/error.html')
 
-
+@user_passes_test(lambda u: u.lol_id is None, '/profile/')
 @login_required
 def profile_add_lol(request):
     message = 'We need your League of Legends\' summoner name.'
     if request.method == 'POST':
         form = summonerInformation(request.POST, instance=request.user)
         if form.is_valid():
-            saveSummonerInfo(form.save())
-            cache.delete('profile')
-            return HttpResponseRedirect("/profile/")
+            result = saveSummonerInfo(form.save())
+            if result:
+                cache.delete('summoner_information')
+                return HttpResponseRedirect("/profile/")
+            else:
+                form._errors[NON_FIELD_ERRORS] = form.error_class(['That\'s not a valid user.'])
     else:
         form = summonerInformation(initial={'server': 'NA'})
         message = 'We need your League of Legends\' summoner name.'
