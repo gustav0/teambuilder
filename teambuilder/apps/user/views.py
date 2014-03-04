@@ -1,10 +1,10 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.cache import cache
+from django.forms.forms import NON_FIELD_ERRORS
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, redirect, render
 from django.template import RequestContext
-from django.forms.forms import NON_FIELD_ERRORS
 
 from teambuilder.apps.user.forms import registerForm
 from teambuilder.apps.user.forms import summonerInformation, personalInformation
@@ -24,6 +24,7 @@ def register(request):
         return render_to_response('user/register.html', ctx, context_instance=RequestContext(request))
     else:
         return render(request, 'user/error.html')
+
 
 @user_passes_test(lambda u: u.lol_id is None, '/profile/')
 @login_required
@@ -48,7 +49,7 @@ def profile_add_lol(request):
 @login_required
 def profile_add_personal(request):
     if request.method == 'POST':
-        form = personalInformation(request.POST,  instance=request.user)
+        form = personalInformation(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
             cache.delete('profile')
@@ -70,6 +71,7 @@ def profile(request):
         information = None
     ctx = {'summoner': information}
     return render_to_response('user/profile.html', ctx, context_instance=RequestContext(request))
+
 
 @login_required
 def account(request):
