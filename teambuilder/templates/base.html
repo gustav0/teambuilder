@@ -61,9 +61,20 @@
     </div>
 </div>
 
+{% if user.is_authenticated %}
+    {% if user.lol_id = Null %}
+        <div class="alert alert-warning">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Tell us a bit more</strong> <p>{{ msg1 }}</p>
+            <a class="btn btn-default" href="{% url 'profile_add_personal' %}">Add Summoner Info</a>
+        </div>
+    {% endif %}
+{% endif %}
+
 <div class="container">
     {% block body %}{% endblock %}
 </div>
+
 
 <div class="modal-footer">
     <span class="glyphicon icon-bookmark"></span>

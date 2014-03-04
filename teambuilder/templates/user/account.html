@@ -6,7 +6,9 @@
         <li><a href="#password" data-toggle="tab">Password</a></li>
     </ul>
     <div class="tab-content">
-
+        {% if form.errors %}
+            <p>Password change failed</p>
+        {% endif %}
         <div class="tab-pane active" id="account">
             <form id="tab">
                 <label>Email</label>
@@ -19,15 +21,30 @@
         </div>
         <div class="tab-pane" id="password">
             <form id="tab2">
-                <label>Current Password</label>
-                <input type="password" class="input-xlarge">
-                <label>New Password</label>
-                <input type="password" class="input-xlarge">
-                <label>Repeat Password</label>
-                <input type="password" class="input-xlarge">
-                <div>
-                    <button class="btn btn-primary">Update</button>
-                </div>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td>{{ form.old_password.errors }}
+                                <label for="id_old_password">Old password:</label></td>
+                            <td>{{ form.old_password }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ form.new_password1.errors }}
+                                <label for="id_new_password1">New password:</label></td>
+                            <td>{{ form.new_password1 }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ form.new_password2.errors }}
+                                <label for="id_new_password2">Confirm password:</label></td>
+                            <td>{{ form.new_password2 }}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Change Password" class="btn btn-default" /></td>
+                        </tr>
+                    </table>
+                </form>
             </form>
         </div>
     </div>
