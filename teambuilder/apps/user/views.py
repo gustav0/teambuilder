@@ -10,7 +10,7 @@ from teambuilder.apps.user.forms import registerForm
 from teambuilder.apps.user.forms import summonerInformation, personalInformation
 from teambuilder.apps.lol.views import saveSummonerInfo, getSummonerInfo
 from django.contrib.auth.views import password_change as _password_change
-from django.contrib.auth.forms import AuthenticationForm, PasswordResetForm, SetPasswordForm, PasswordChangeForm
+from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
 
 def register(request):
     if not request.user.is_authenticated():
@@ -75,6 +75,12 @@ def profile(request):
 
 
 @login_required
-def account(request, current_app=None, extra_context=None):
-    return _password_change(request, 'user/account.html', 'user/account.html#password', PasswordChangeForm, current_app, extra_context)
-    #return render_to_response('user/account.html', context_instance=RequestContext(request))
+def account(request):
+    setPasswordForm = SetPasswordForm(request.user)
+    changePasswordForm = PasswordChangeForm(setPasswordForm)
+    ctx = {'PasswordChangeForm':changePasswordForm}
+    return render_to_response('user/account.html', ctx, context_instance=RequestContext(request))
+
+@login_required
+def account_change_password(request):
+    return _password_change(request, 'user/account.html', 'account', PasswordChangeForm)

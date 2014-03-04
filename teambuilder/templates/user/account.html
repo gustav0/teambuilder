@@ -20,31 +20,29 @@
             </form>
         </div>
         <div class="tab-pane" id="password">
-            <form id="tab2">
-                <form method="post" action="">
-                    {% csrf_token %}
-                    <table>
-                        <tr>
-                            <td>{{ form.old_password.errors }}
-                                <label for="id_old_password">Old password:</label></td>
-                            <td>{{ form.old_password }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ form.new_password1.errors }}
-                                <label for="id_new_password1">New password:</label></td>
-                            <td>{{ form.new_password1 }}</td>
-                        </tr>
-                        <tr>
-                            <td>{{ form.new_password2.errors }}
-                                <label for="id_new_password2">Confirm password:</label></td>
-                            <td>{{ form.new_password2 }}</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><input type="submit" value="Change Password" class="btn btn-default" /></td>
-                        </tr>
-                    </table>
-                </form>
+            <form id="tab2" method="post" action="{% url 'account_change_password' %}">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>{{ PasswordChangeForm.old_password.errors }}
+                            <label for="id_old_password">Old password:</label></td>
+                        <td>{{ PasswordChangeForm.old_password }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ PasswordChangeForm.new_password1.errors }}
+                            <label for="id_new_password1">New password:</label></td>
+                        <td>{{ PasswordChangeForm.new_password1 }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ PasswordChangeForm.new_password2.errors }}
+                            <label for="id_new_password2">Confirm password:</label></td>
+                        <td>{{ PasswordChangeForm.new_password2 }}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Change Password" class="btn btn-default"/></td>
+                    </tr>
+                </table>
             </form>
         </div>
     </div>
