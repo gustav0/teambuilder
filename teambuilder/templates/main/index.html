@@ -1,5 +1,45 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <h3> Welcome to Teambuilder!</h3>
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="active item">
+                <img src="http://www.desdebellaterra.com/takethenashor/wp-content/uploads/dr-mundo-inicio.jpg" alt="banner1" />
+                <div class="carousel-caption">
+                    <h3>Dr. Mundo</h3>
+                    <p>...</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="http://www.desdebellaterra.com/takethenashor/wp-content/uploads/dr-mundo-inicio.jpg" alt="banner2" />
+                <div class="carousel-caption">
+                    <h3>Syndra</h3>
+                    <p>...</p>
+                </div>
+            </div>
+            <div class="item">
+                <img src="http://www.desdebellaterra.com/takethenashor/wp-content/uploads/dr-mundo-inicio.jpg" alt="banner3" />
+                <div class="carousel-caption">
+                    <h3>Morgana</h3>
+                    <p>...</p>
+                </div>
+            </div>
+        </div>
+
+        <a class="carousel-control left" href="#carousel" data-slide="prev"><span class="glyphicon icon-chevron-left"></span></a>
+        <a class="carousel-control right" href="#carousel" data-slide="next"><span class="glyphicon icon-chevron-right"></span></a>
+    </div>
+
 {% endblock %}
+
+<script>
+    $(document).ready(function(){
+        $('.carousel').carousel()
+    });
+</script>
