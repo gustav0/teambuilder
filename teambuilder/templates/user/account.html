@@ -6,9 +6,6 @@
         <li><a href="#password" data-toggle="tab">Password</a></li>
     </ul>
     <div class="tab-content">
-        {% if form.errors %}
-            <p>Password change failed</p>
-        {% endif %}
         <div class="tab-pane active" id="account">
             <form id="tab">
                 <label>Email</label>
@@ -21,21 +18,24 @@
         </div>
         <div class="tab-pane" id="password">
             <form id="tab2" method="post" action="{% url 'account_change_password' %}">
+                {% if form.errors %}
+                    <p>Password change failed</p>
+                {% endif %}
                 {% csrf_token %}
                 <table>
                     <tr>
                         <td>{{ PasswordChangeForm.old_password.errors }}
-                            <label for="id_old_password">Old password:</label></td>
+                            <label for="old_password">Old password:</label></td>
                         <td>{{ PasswordChangeForm.old_password }}</td>
                     </tr>
                     <tr>
                         <td>{{ PasswordChangeForm.new_password1.errors }}
-                            <label for="id_new_password1">New password:</label></td>
+                            <label for="new_password1">New password:</label></td>
                         <td>{{ PasswordChangeForm.new_password1 }}</td>
                     </tr>
                     <tr>
                         <td>{{ PasswordChangeForm.new_password2.errors }}
-                            <label for="id_new_password2">Confirm password:</label></td>
+                            <label for="new_password2">Confirm password:</label></td>
                         <td>{{ PasswordChangeForm.new_password2 }}</td>
                     </tr>
                     <tr>
@@ -46,4 +46,24 @@
             </form>
         </div>
     </div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+    $(function()
+    {
+        $('a[data-toggle="tab"]').on('shown', function () {
+            localStorage.setItem('accLastTab', $(this).attr('href'));
+        });
+
+        var lastTab = localStorage.getItem('accLastTab');
+        if (lastTab) {
+            $('a[href=' + lastTab + ']').tab('show');
+        }
+        else
+        {
+            $('a[data-toggle="tab"]:first').tab('show');
+        }
+    });
+</script>
 {% endblock %}

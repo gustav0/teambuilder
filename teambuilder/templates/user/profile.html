@@ -18,3 +18,23 @@
         </div>
     </div>
 {% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+        $(function()
+        {
+            $('a[data-toggle="tab"]').on('shown', function () {
+                localStorage.setItem('proLastTab', $(this).attr('href'));
+            });
+
+            var lastTab = localStorage.getItem('proLastTab');
+            if (lastTab) {
+                $('a[href=' + lastTab + ']').tab('show');
+            }
+            else
+            {
+                $('a[data-toggle="tab"]:first').tab('show');
+            }
+        });
+    </script>
+{% endblock %}
